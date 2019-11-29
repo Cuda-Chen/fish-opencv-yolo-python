@@ -13,9 +13,11 @@ def runYOLODetection(args):
     LABELS = open(labelsPath).read().strip().split("\n")
 
     # initialize a list of colors to represent each possible class label
-    np.random.seed(42)
+    np.random.seed(0)
     COLORS = np.random.randint(0, 255, size=(len(LABELS), 3),
         dtype="uint8")
+    print(COLORS)
+    #COLORS = np.array([255, 0, 0], dtype="uint8")
 
     # derive the paths to the YOLO weights and model configuration
     weightsPath = os.path.sep.join([args["yolo"], "fish.weights"])
@@ -127,5 +129,5 @@ if __name__ == '__main__':
     #cv.namedWindow("Image", cv.WINDOW_NORMAL)
     #cv.resizeWindow("image", 1920, 1080)
     cv.imshow("Image", image)
-    cv.imwrite("predictions.jpg", image)
+    #cv.imwrite("predictions.jpg", image)
     cv.waitKey(0)
